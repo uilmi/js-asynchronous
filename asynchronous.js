@@ -1,29 +1,24 @@
+// Asynchronous example
+
 console.log("Hello binarian!");
 setTimeout(() => {
     console.log("Javascript")
-}, 10);
+}, 100);
 console.log("Developer");
 
 
-function requestAjax() {
-    console.log('Requesting Ajax...');
-}
+console.log('Aku keluar pertama');
 
-function displayUser() {
-    console.log('Display user...');
-}
-console.log('------');
+setTimeout(() => console.log('Aku keluar setelah 3 detik'), 3000);
+setTimeout(() => console.log('Apakah aku yang kedua?'), 0);
 
-// Race condition
-console.log('Hello');
-let user = requestAjax();
-displayUser(user);
+console.log('Apakah aku yang ketiga?');
 
-setTimeout(() => {
+let a = 0;
 
+const iniInterval = setInterval(() => {
+    console.log(`${++a} kali jalan`)
+    if (a === 10) clearInterval(iniInterval)
 }, 100);
 
-setTimeout(() => {
-
-}, 100);
-
+console.log('Apakah jalan sebelum setInterval?');
